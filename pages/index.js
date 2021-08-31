@@ -3,6 +3,16 @@ import styles from '../styles/Home.module.css'
 import Block from '../components/Block'
 
 export default function Home() {
+  const blocks = [
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+    new Array(8).fill(8),
+  ]
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +22,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Block />
+        { blocks.map((row, indexRow) => {
+          return row.map((column, indexColumn) => {
+            return <Block row={indexRow} column={indexColumn} />
+          })
+        }) }
       </main>
     </div>
   )
